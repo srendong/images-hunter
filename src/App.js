@@ -8,6 +8,12 @@ class App extends React.Component {
     images:[],
     page: ''
   }
+
+  scroll= () =>{
+    const element = document.querySelector(".jumbotron");
+    element.scrollIntoView('smooth', 'start')
+  }
+
   backPage= ()=>{
     //leer estado actual
     let page = this.state.page
@@ -19,6 +25,7 @@ class App extends React.Component {
         page
       },()=>{
         this.askApi()
+        this.scroll()
       })
   }
 
@@ -32,6 +39,7 @@ class App extends React.Component {
         page
       },()=>{
         this.askApi()
+        this.scroll()
       })
   }
 
