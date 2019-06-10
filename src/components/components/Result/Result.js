@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Image from '../Image/Image';
+import Pagination from '../Pagination/Pagination';
 
 class Result extends Component{
 
@@ -19,6 +20,12 @@ class Result extends Component{
                             image ={image}
                         />
                     ))}
+                </div>
+                <div className="row justify-content-center">
+                <Pagination
+                    backPage = {this.props.backPage}
+                    nextPage = {this.props.nextPage}
+                />
                 </div>
             </React.Fragment>
         )

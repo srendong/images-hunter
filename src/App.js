@@ -5,12 +5,42 @@ import Result from './components/components/Result/Result';
 class App extends React.Component {
   state={
     term: "",
-    images:[]
+    images:[],
+    page: ''
+  }
+  backPage= ()=>{
+    //leer estado actual
+    let page = this.state.page
+    //restar pagina
+    if(page===1){return null}
+      page -= 1
+    // cambio al estado
+      this.setState({
+        page
+      },()=>{
+        this.askApi()
+      })
   }
 
-  askApi=()=>{
-    const url = `https://pixabay.com/api/?key=12729852-59eef194e2bcf04b886ad0945&q=${this.state.term}`
+  nextPage= ()=>{
+    //leer estado actual
+      let page = this.state.page
+    //sumar pagina
+      page += 1
+    // cambio al estado
+      this.setState({
+        page
+      },()=>{
+        this.askApi()
+      })
+  }
 
+  
+  askApi=()=>{
+    const term = this.state.term
+    const page= this.state.page
+    const url = `https://pixabay.com/api/?key=12729852-59eef194e2bcf04b886ad0945&q=${term}&page=${page}`
+    
     fetch(url)
     .then(respuesta => respuesta.json())
     .then(resultado => this.setState({images: resultado.hits}))
@@ -18,7 +48,8 @@ class App extends React.Component {
 
   dataSearch= term =>{
     this.setState({
-      term
+      term,
+      page: 1
     },()=>{
       this.askApi();
     })
@@ -32,7 +63,12 @@ class App extends React.Component {
         <p className="lead text-center">Images Hounter</p>
         <Search dataSearch={this.dataSearch}/>
       </div>
-        <Result images={this.state.images}/>
+        <Result 
+          images={this.state.images}
+          backPage = {this.backPage}
+          nextPage = {this.nextPage}
+          />
+          
     </div>
     </>
   );
