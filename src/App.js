@@ -3,11 +3,16 @@ import Search from './components/components/Search/Search';
 
 class App extends React.Component {
   state={
-    term: ""
+    term: "",
+    images:[]
   }
 
   askApi=()=>{
     const url = `https://pixabay.com/api/?key=12729852-59eef194e2bcf04b886ad0945&q=${this.state.term}`
+
+    fetch(url)
+    .then(respuesta => respuesta.json())
+    .then(resultado => this.setState({images: resultado.hits}))
   }
 
   dataSearch= term =>{
@@ -27,7 +32,6 @@ class App extends React.Component {
         <Search dataSearch={this.dataSearch}/>
       </div>
     </div>
-    {this.state.term}
     </>
   );
  }
