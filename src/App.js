@@ -14,7 +14,7 @@ class App extends React.Component {
     this.setState({
       term
     },()=>{
-      this.askApi()
+      this.askApi();
     })
   }
 
