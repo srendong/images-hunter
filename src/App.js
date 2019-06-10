@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './components/components/Search/Search';
 import Result from './components/components/Result/Result';
+import "./bootstrap.min.css"
 
 class App extends React.Component {
   state={
@@ -68,7 +69,7 @@ class App extends React.Component {
     <>
     <div className="container">
       <div className="jumbotron">
-        <p className="lead text-center">Images Hounter</p>
+        <h1 className=" text-center mb-5">Images Hounter</h1>
         <Search dataSearch={this.dataSearch}/>
       </div>
         <Result 

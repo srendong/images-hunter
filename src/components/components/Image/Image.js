@@ -7,7 +7,9 @@ const Image = (props) => {
             <div className="card alto">
                 <img src={previewURL} alt={tags} className="card-img-top"/>
                 <div className="card-body">
-                    <p className="card-text">{likes}Likes</p>
+                    <p className="card-text">{likes} Likes</p>
+                    <p className="card-text">{tags} Likes</p>
+
                     
                     <a href={largeImageURL} target="_blank" className="btn btn-secondary btn-block" >Show image</a>
                 </div>
